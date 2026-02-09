@@ -1,0 +1,33 @@
+<h1>Questions</h1>
+
+<%= link_to "Add Question", new_admin_question_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Question</th>
+      <th>Type</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @questions.each do |q| %>
+      <tr>
+        <td><%= q.category.name %></td>
+        <td><%= truncate(q.content, length: 50) %></td>
+        <td><%= q.question_type %></td>
+        <td><%= q.active ? "Active" : "Inactive" %></td>
+        <td>
+          <%= link_to "Edit", edit_admin_question_path(q) %> |
+          <%= link_to "Delete",
+                      admin_question_path(q),
+                      method: :delete,
+                      data: { confirm: "Are you sure?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

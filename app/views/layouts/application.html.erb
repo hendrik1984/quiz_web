@@ -19,11 +19,19 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%#= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <% if controller_path.start_with?('admin/') %>
+      <%= stylesheet_link_tag "admin", "data-turbo-track": "reload" %>
+    <% else %>
+      <%= stylesheet_link_tag "page", "data-turbo-track": "reload" %>
+    <% end %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

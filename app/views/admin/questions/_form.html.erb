@@ -1,0 +1,51 @@
+<%= form_with model: [:admin, @question], local: true do |f| %>
+
+  <div>
+    <%= f.label :category_id %>
+    <%= f.collection_select :category_id, Category.all, :id, :name %>
+  </div>
+
+  <div>
+    <%= f.label :content, "Question Text" %>
+    <%= f.text_area :content %>
+  </div>
+
+  <div>
+    <%= f.label :image, "Question Image" %>
+    <%= f.file_field :image %>
+    <% if @question.image.attached? %>
+      <br>
+      <%= image_tag @question.image, width: 150 %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= f.label :question_type %>
+    <%= f.select :question_type, Question::QUESTION_TYPES %>
+  </div>
+
+  <div>
+    <%= f.label :difficulty %>
+    <%= f.select :difficulty, %w[easy medium hard] %>
+  </div>
+
+  <div>
+    <%= f.label :explanation %>
+    <%= f.text_area :explanation %>
+  </div>
+
+  <hr>
+
+  <h3>Answer Choices</h3>
+
+  <%= f.fields_for :options do |o| %>
+    <div style="margin-bottom: 10px;">
+      <%= o.text_field :content, placeholder: "Answer text" %>
+      <%= o.file_field :image %>
+      <%= o.check_box :correct %> Correct
+    </div>
+  <% end %>
+
+  <%= f.submit %>
+
+<% end %>

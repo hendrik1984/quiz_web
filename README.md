@@ -5,20 +5,8 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version 3.4
 
-* System dependencies
+* CSS Framework Bootstrap 5
+  check for the separated file on application.html.erb, separated for admin and common page
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
