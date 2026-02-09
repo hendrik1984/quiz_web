@@ -1,0 +1,50 @@
+<!-- Sidebar -->
+<div class="sidebar">
+    <div class="logo">
+        <div class="logo-text">Quiz</div>
+        <div class="logo-subtitle">Admin Dashboard</div>
+    </div>
+    
+    <nav class="nav flex-column mt-3">
+        <div class="nav-item">
+            <a class="nav-link" href="#" onclick="switchView('dashboard', event)">
+                <i class="bi bi-speedometer2"></i>
+                <span>Dashboard</span>
+            </a>
+        </div>
+        <div class="nav-item">
+            <a class="nav-link active" href="#" onclick="switchView('categories', event)">
+                <i class="bi bi-folder"></i>
+                <span>Categories</span>
+            </a>
+        </div>
+        <div class="nav-item">
+            <a class="nav-link" href="#" onclick="switchView('questions', event)">
+                <i class="bi bi-question-circle"></i>
+                <span>Questions</span>
+            </a>
+        </div>
+        <div class="nav-item">
+            <a class="nav-link" href="#" onclick="switchView('users', event)">
+                <i class="bi bi-people"></i>
+                <span>Users</span>
+            </a>
+        </div>
+        <div class="nav-item">
+            <a class="nav-link" href="#" onclick="switchView('settings', event)">
+                <i class="bi bi-gear"></i>
+                <span>Settings</span>
+            </a>
+        </div>
+    </nav>
+    
+    <div class="user-section">
+        <div class="d-flex align-items-center">
+            <div class="user-avatar">AD</div>
+            <div class="ms-3">
+                <div class="fw-semibold" style="font-size: 0.9rem;">Admin User</div>
+                <div class="text-muted" style="font-size: 0.75rem;">Administrator</div>
+            </div>
+        </div>
+    </div>
+</div>
