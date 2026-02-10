@@ -159,6 +159,29 @@ body {
     border-color: var(--primary);
 }
 
+.btn-secondary {
+    background: white;
+    color: #666;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: var(--primary-pale);
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
 /* Table Styling */
 .table thead {
     background: var(--primary-pale);
@@ -238,6 +261,67 @@ body {
     font-weight: 500;
     color: #333;
     margin-bottom: 0.5rem;
+}
+
+/* Form Card */
+.form-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 20px rgba(138, 100, 180, 0.08);
+    max-width: 800px;
+}
+
+/* Form Elements */
+.form-label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-size: 0.9375rem;
+}
+
+.form-control,
+.form-select {
+    border: 1.5px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 0.9375rem;
+    transition: all 0.2s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.2rem rgba(138, 100, 180, 0.15);
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-check {
+    padding-left: 0;
+}
+
+.form-check-input {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #d0d0d8;
+    border-radius: 4px;
+    margin-top: 0px !important;
+    margin-right: 0.5rem;
+}
+
+.form-check-input:checked {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.form-check-label {
+    font-weight: 500;
+    color: #666;
+    font-size: 0.9375rem;
 }
 
 /* Question Item */

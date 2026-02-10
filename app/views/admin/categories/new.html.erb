@@ -1,5 +1,22 @@
-<h1>New Category</h1>
+<!-- Main Content -->
+<div class="main-content">
+    <!-- SIDEBAR -->
+    <%= render "admin/layouts/sidebar" %>
 
-<%= render "form" %>
-
-<%= link_to "Back", admin_categories_path %>
+    <div class="mx-auto" style="width: 600px;">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="page-title">Quiz Categories</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">New Category</li>
+                    </ol>
+                </nav>
+            </div>       
+        </div>
+        
+        <%= render "form" %>
+        
+    </div>
+</div>
