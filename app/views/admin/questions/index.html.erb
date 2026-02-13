@@ -1,33 +1,88 @@
-<h1>Questions</h1>
+<!-- Main Content -->
+<div class="main-content">
+  <!-- SIDEBAR -->
+  <%= render "admin/layouts/sidebar" %>
 
-<%= link_to "Add Question", new_admin_question_path %>
+  <div id="categoriesView" class="view-content">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="page-title">Quiz Questions</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Questions</li>
+                </ol>
+            </nav>
+        </div>
+        
+        <%= link_to new_admin_question_path, class: "btn btn-primary" do %>
+          <i class="bi bi-plus-lg me-2"></i>Add Questions
+        <% end %>        
+    </div>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th>Question</th>
-      <th>Type</th>
-      <th>Status</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
+  <div class="card">
+    <div class="card-body">
+      <% if @questions.present? %>
+        <div class="table-responsive">
+          <table class="table table-hover">
+              <thead>
+                  <tr>
+                      <th>Category</th>
+                      <th>Question</th>
+                      <th>Type</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <% @questions.each do |question| %>
+                  <tr>
+                      <td><strong><%= question.name %></strong></td>
+                      <td><%= question.slug %></td>
+                      <td>
+                        <span class="badge <%= question.active? ? 'bg-success': 'bg-warning' %>">
+                          <%= question.active? ? "Active": "Inactive" %>
+                        </span>
+                      </td>
+                      <td>        
+                          <%= link_to edit_admin_question_path(question), class: "btn btn-sm btn-outline-primary btn-icon me-1" do %>
+                            <i class="bi bi-pencil"></i>
+                          <% end %>
+                          
+                          <%= link_to admin_question_path(question), class: "btn btn-sm btn-outline-danger btn-icon", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+                            <i class="bi bi-trash"></i>
+                          <% end %>
+                      </td>
+                  </tr>
+                <% end %>
+              </tbody>
+          </table>
+        </div>
+      <% else %>
+        <div>No Question(s)</div>
+      <% end %>
+    </div>
+  </div>
 
-  <tbody>
-    <% @questions.each do |q| %>
-      <tr>
-        <td><%= q.category.name %></td>
-        <td><%= truncate(q.content, length: 50) %></td>
-        <td><%= q.question_type %></td>
-        <td><%= q.active ? "Active" : "Inactive" %></td>
-        <td>
-          <%= link_to "Edit", edit_admin_question_path(q) %> |
-          <%= link_to "Delete",
-                      admin_question_path(q),
-                      method: :delete,
-                      data: { confirm: "Are you sure?" } %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <!--
+  <table>
+    <tbody>
+      <% @questions.each do |q| %>
+        <tr>
+          <td><%= q.category.name %></td>
+          <td><%= truncate(q.content, length: 50) %></td>
+          <td><%= q.question_type %></td>
+          <td><%= q.active ? "Active" : "Inactive" %></td>
+          <td>
+            <%= link_to "Edit", edit_admin_question_path(q) %> |
+            <%= link_to "Delete",
+                        admin_question_path(q),
+                        method: :delete,
+                        data: { confirm: "Are you sure?" } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>-->
+</div>

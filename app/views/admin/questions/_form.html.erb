@@ -1,51 +1,67 @@
-<%= form_with model: [:admin, @question], local: true do |f| %>
+<!-- Form Card -->
+<div class="form-card">
+  <%= form_with model: [:admin, @question], local: true do |f| %>
+    <div class="mb-4">
+        <% if @question.errors.any? %>
+          <div style="color: red">
+            <h2><%= pluralize(@question.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-  <div>
-    <%= f.label :category_id %>
-    <%= f.collection_select :category_id, Category.all, :id, :name %>
-  </div>
-
-  <div>
-    <%= f.label :content, "Question Text" %>
-    <%= f.text_area :content %>
-  </div>
-
-  <div>
-    <%= f.label :image, "Question Image" %>
-    <%= f.file_field :image %>
-    <% if @question.image.attached? %>
-      <br>
-      <%= image_tag @question.image, width: 150 %>
-    <% end %>
-  </div>
-
-  <div>
-    <%= f.label :question_type %>
-    <%= f.select :question_type, Question::QUESTION_TYPES %>
-  </div>
-
-  <div>
-    <%= f.label :difficulty %>
-    <%= f.select :difficulty, %w[easy medium hard] %>
-  </div>
-
-  <div>
-    <%= f.label :explanation %>
-    <%= f.text_area :explanation %>
-  </div>
-
-  <hr>
-
-  <h3>Answer Choices</h3>
-
-  <%= f.fields_for :options do |o| %>
-    <div style="margin-bottom: 10px;">
-      <%= o.text_field :content, placeholder: "Answer text" %>
-      <%= o.file_field :image %>
-      <%= o.check_box :correct %> Correct
+            <ul>
+              <% @question.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
     </div>
+
+    <div class="mb-4">
+      <%= f.label :category_id, class: "form-label" %>
+      <%= f.collection_select :category_id, Category.all, :id, :name, {}, {class: "form-select"} %>
+    </div>
+
+    <div class="mb-4">
+      <%= f.label :content, "Question Text", class: "form-label" %>
+      <%= f.text_area :content, class:"form-control" %>
+    </div>
+
+    <div class="mb-4">
+      <%= f.label :image, "Question Image", class: "form-label" %>
+      <%= f.file_field :image, class:"form-control" %>
+      <% if @question.image.attached? %>
+        <br>
+        <%= image_tag @question.image, width: 150 %>
+      <% end %>
+    </div>
+
+    <div class="mb-4">
+      <%= f.label :question_type, class: "form-label" %>
+      <%= f.select :question_type, Question::QUESTION_TYPES, {}, {class: "form-select"}  %>
+    </div>
+
+    <div>
+      <%= f.label :difficulty, class: "form-label" %>
+      <%= f.select :difficulty, %w[easy medium hard], {}, {class: "form-select"}  %>
+    </div>
+
+    <div>
+      <%= f.label :explanation, class: "form-label" %>
+      <%= f.text_area :explanation, class:"form-control" %>
+    </div>
+
+    <hr>
+
+    <h3>Answer Choices</h3>
+
+    <%= f.fields_for :options do |o| %>
+      <div style="margin-bottom: 10px; mb-4">
+        <%= o.text_field :content, placeholder: "Answer text" %>
+        <%= o.file_field :image %>
+        <%= o.check_box :correct %> Correct
+      </div>
+    <% end %>
+
+    <%= f.submit class: "btn btn-primary" %>
+
   <% end %>
-
-  <%= f.submit %>
-
-<% end %>
+</div>

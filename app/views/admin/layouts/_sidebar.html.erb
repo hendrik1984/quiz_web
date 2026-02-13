@@ -13,16 +13,20 @@
             </a>
         </div>
         <div class="nav-item">
-            <a class="nav-link active" href="#" onclick="switchView('categories', event)">
+            <!--<a class="nav-link active" href="#" onclick="switchView('categories', event)">
                 <i class="bi bi-folder"></i>
                 <span>Categories</span>
-            </a>
+            </a>--->
+            <%= link_to admin_categories_path, class: "nav-link active" do %>
+                <i class="bi bi-folder"></i>
+                <span>Categories</span>
+            <% end %>
         </div>
         <div class="nav-item">
-            <a class="nav-link" href="#" onclick="switchView('questions', event)">
+            <%= link_to admin_questions_path, class: "nav-link" do %>
                 <i class="bi bi-question-circle"></i>
                 <span>Questions</span>
-            </a>
+            <% end %>
         </div>
         <div class="nav-item">
             <a class="nav-link" href="#" onclick="switchView('users', event)">
