@@ -1,53 +1,52 @@
-<!-- Sidebar -->
-<div class="sidebar">
-    <div class="logo">
-        <div class="logo-text">Quiz</div>
-        <div class="logo-subtitle">Admin Dashboard</div>
-    </div>
-    
-    <nav class="nav flex-column mt-3">
-        <div class="nav-item">
-            <a class="nav-link" href="#" onclick="switchView('dashboard', event)">
+<div data-controller="sidebar">
+    <!-- Mobile Toggle Button -->
+    <button class="mobile-toggle"
+            id="sidebarToggle"
+            data-action="click->sidebar#toggle"
+            >
+        <i class="bi bi-list" data-sidebar-target="toggleIcon"></i>
+    </button>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay" data-sidebar-target="overlay" data-action="click->sidebar#closeOnOverlay"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar" data-sidebar-target="sidebar">
+        <div class="sidebar-header">
+            <h1 class="brand-title">Quiz</h1>
+            <p class="brand-subtitle">Admin Dashboard</p>
+        </div>
+        
+        <nav class="sidebar-menu">
+            <a class="menu-item" href="#"  onclick="switchView('dashboard', event)">
                 <i class="bi bi-speedometer2"></i>
                 <span>Dashboard</span>
             </a>
-        </div>
-        <div class="nav-item">
-            <!--<a class="nav-link active" href="#" onclick="switchView('categories', event)">
-                <i class="bi bi-folder"></i>
-                <span>Categories</span>
-            </a>--->
-            <%= link_to admin_categories_path, class: "nav-link active" do %>
+            <%= link_to admin_categories_path, class: "menu-item active" do %>
                 <i class="bi bi-folder"></i>
                 <span>Categories</span>
             <% end %>
-        </div>
-        <div class="nav-item">
-            <%= link_to admin_questions_path, class: "nav-link" do %>
+            <%= link_to admin_questions_path, class: "menu-item" do %>
                 <i class="bi bi-question-circle"></i>
                 <span>Questions</span>
             <% end %>
-        </div>
-        <div class="nav-item">
-            <a class="nav-link" href="#" onclick="switchView('users', event)">
+            <a class="menu-item" href="#" onclick="switchView('users', event)">
                 <i class="bi bi-people"></i>
                 <span>Users</span>
             </a>
-        </div>
-        <div class="nav-item">
-            <a class="nav-link" href="#" onclick="switchView('settings', event)">
+            <a class="menu-item" href="#" onclick="switchView('settings', event)">
                 <i class="bi bi-gear"></i>
                 <span>Settings</span>
             </a>
-        </div>
-    </nav>
-    
-    <div class="user-section">
-        <div class="d-flex align-items-center">
-            <div class="user-avatar">AD</div>
-            <div class="ms-3">
-                <div class="fw-semibold" style="font-size: 0.9rem;">Admin User</div>
-                <div class="text-muted" style="font-size: 0.75rem;">Administrator</div>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="user-avatar">AD</div>
+                <div class="user-info">
+                    <p class="user-name">Admin User</p>
+                    <p class="user-role">Administrator</p>
+                </div>
             </div>
         </div>
     </div>
