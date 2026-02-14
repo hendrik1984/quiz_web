@@ -21,26 +21,26 @@
         </div>
         
         <nav class="sidebar-menu">
-            <a class="menu-item" href="#"  onclick="switchView('dashboard', event)">
+            <%= link_to admin_categories_path, id: "menu-dashboard", class: "menu-item menuItem", data: { action: "sidebar#setActive", sidebar_target: "menuItem" } do %>
                 <i class="bi bi-speedometer2"></i>
                 <span>Dashboard</span>
-            </a>
-            <%= link_to admin_categories_path, class: "menu-item active" do %>
+            <% end %>
+            <%= link_to admin_categories_path, id: "menu-categories",  class: "menu-item menuItem", data: { action: "sidebar#setActive", sidebar_target: "menuItem" } do %>
                 <i class="bi bi-folder"></i>
                 <span>Categories</span>
             <% end %>
-            <%= link_to admin_questions_path, class: "menu-item" do %>
+            <%= link_to admin_questions_path, id: "menu-questions", class: "menu-item menuItem", data: { action: "sidebar#setActive", sidebar_target: "menuItem" } do %>
                 <i class="bi bi-question-circle"></i>
                 <span>Questions</span>
             <% end %>
-            <a class="menu-item" href="#" onclick="switchView('users', event)">
+            <%= link_to admin_categories_path, id: "menu-users", class: "menu-item menuItem", data: { action: "sidebar#setActive", sidebar_target: "menuItem" } do %>
                 <i class="bi bi-people"></i>
                 <span>Users</span>
-            </a>
-            <a class="menu-item" href="#" onclick="switchView('settings', event)">
+            <% end %>
+            <%= link_to admin_categories_path, id: "menu-settings", class: "menu-item menuItem", data: { action: "sidebar#setActive", sidebar_target: "menuItem" } do %>
                 <i class="bi bi-gear"></i>
-                <span>Settings</span>
-            </a>
+                <span>Setting</span>
+            <% end %>
         </nav>
         
         <div class="sidebar-footer">
