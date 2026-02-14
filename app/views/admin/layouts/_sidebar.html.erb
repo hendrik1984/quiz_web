@@ -2,13 +2,16 @@
     <!-- Mobile Toggle Button -->
     <button class="mobile-toggle"
             id="sidebarToggle"
-            data-action="click->sidebar#toggle"
-            >
+            data-action="click->sidebar#toggle">
         <i class="bi bi-list" data-sidebar-target="toggleIcon"></i>
     </button>
 
     <!-- Sidebar Overlay -->
-    <div class="sidebar-overlay" id="sidebarOverlay" data-sidebar-target="overlay" data-action="click->sidebar#closeOnOverlay"></div>
+    <div class="sidebar-overlay" 
+        id="sidebarOverlay" 
+        data-sidebar-target="overlay" 
+        data-action="click->sidebar#closeOnOverlay">
+    </div>
 
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar" data-sidebar-target="sidebar">
