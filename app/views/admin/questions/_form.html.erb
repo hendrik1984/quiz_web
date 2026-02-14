@@ -39,14 +39,21 @@
       <%= f.select :question_type, Question::QUESTION_TYPES, {}, {class: "form-select"}  %>
     </div>
 
-    <div>
+    <div class="mb-4">
       <%= f.label :difficulty, class: "form-label" %>
       <%= f.select :difficulty, %w[easy medium hard], {}, {class: "form-select"}  %>
     </div>
 
-    <div>
+    <div class="mb-4">
       <%= f.label :explanation, class: "form-label" %>
       <%= f.text_area :explanation, class:"form-control" %>
+    </div>
+
+    <div class="mb-4">
+      <div class="d-flex align-items-center">
+        <%= f.check_box :active, class: "form-check-input" %>
+        <%= f.label :active, class: "form-check-label" %>
+      </div>
     </div>
 
     <hr>

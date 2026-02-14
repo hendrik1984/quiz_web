@@ -30,7 +30,8 @@
                   <tr>
                       <th>Category</th>
                       <th>Question</th>
-                      <th>Type</th>
+                      <th>Difficulty</th>
+                      <th>Explanation</th>
                       <th>Status</th>
                       <th>Actions</th>
                   </tr>
@@ -38,13 +39,32 @@
               <tbody>
                 <% @questions.each do |question| %>
                   <tr>
-                      <td><strong><%= question.name %></strong></td>
-                      <td><%= question.slug %></td>
+                      <td><strong><%= question.content %></strong></td>
+                      <td><%= question.question_type %></td>
                       <td>
-                        <span class="badge <%= question.active? ? 'bg-success': 'bg-warning' %>">
-                          <%= question.active? ? "Active": "Inactive" %>
+                        <span class="badge 
+                          <%= 
+                            case question.difficulty
+                              when 'easy'
+                                'bg-success'
+                              when 'medium'
+                                'bg-warning'
+                              when 'hard'
+                                'bg-danger'
+                              else
+                                'bg-info'
+                              end
+                           %>
+                        ">
+                          <%= question.difficulty %>
                         </span>
                       </td>
+                      <td><%= question.explanation %></td>
+                      <td>
+                          <span class="badge <%= question.active? ? 'bg-success': 'bg-warning' %>">
+                            <%= question.active? ? "Active": "Inactive" %>
+                          </span>
+                        </td>
                       <td>        
                           <%= link_to edit_admin_question_path(question), class: "btn btn-sm btn-outline-primary btn-icon me-1" do %>
                             <i class="bi bi-pencil"></i>

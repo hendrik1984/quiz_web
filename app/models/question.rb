@@ -13,7 +13,7 @@ class Question < ApplicationRecord
 
   def must_have_options_for_choice_questions
     if %w[single_choice multiple_choice].include?(question_type)
-      errors.add(:options, "must be present") if options.reject(&:marked_for_destructions?).empty?
+      errors.add(:options, "must be present") if options.reject(&:marked_for_destruction?).empty?
     end
   end
 end
