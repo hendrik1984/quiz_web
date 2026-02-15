@@ -43,6 +43,9 @@ gem "image_processing", "~> 1.2"
 gem "dartsass-rails"
 gem "bootstrap", "~> 5.3.3"
 
+# Pagination
+gem 'kaminari'
+
 group :development, :test do
 
   gem 'dotenv'
