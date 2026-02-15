@@ -1,0 +1,399 @@
+<%= render "layouts/navbar" %>
+
+<!-- Main Header -->
+<div class="main-header">
+    <h1>Choose Your Quiz Category</h1>
+    <p>Test your knowledge across various topics and challenge yourself!</p>
+</div>
+
+<!-- Filter Section -->
+<div class="container mb-4">
+    <div class="row g-3">
+        <div class="col-12">
+            <div class="filter-wrapper">
+                <div class="d-flex gap-2">
+                    <div class="flex-grow-1">
+                        <div class="input-group search-input-group">
+                            <span class="input-group-text bg-white border-end-0">
+                                <i class="bi bi-search"></i>
+                            </span>
+                            <input type="text" class="form-control border-start-0 ps-0" id="searchInput" placeholder="Search quiz categories..." onkeyup="filterCategories()">
+                        </div>
+                    </div>
+                    <button class="btn btn-filter-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#advancedFilters" aria-expanded="false" aria-controls="advancedFilters">
+                        <i class="bi bi-funnel-fill me-2"></i>
+                        Filters
+                        <i class="bi bi-chevron-down ms-2 filter-chevron"></i>
+                    </button>
+                </div>
+                
+                <!-- Advanced Filters Collapse -->
+                <div class="collapse mt-3" id="advancedFilters">
+                    <div class="advanced-filters-content">
+                        <div class="row g-3">
+                            <div class="col-12 col-md-6">
+                                <label class="form-label fw-semibold text-white">
+                                    <i class="bi bi-bar-chart-fill me-2"></i>Difficulty Level
+                                </label>
+                                <select class="form-select" id="difficultyFilter" onchange="filterCategories()">
+                                    <option value="all">All Difficulty Levels</option>
+                                    <option value="easy">Easy</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="hard">Hard</option>
+                                    <option value="mix">Mix</option>
+                                </select>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label class="form-label fw-semibold text-white">
+                                    <i class="bi bi-tags-fill me-2"></i>Category Tags
+                                </label>
+                                <div class="d-flex gap-2 flex-wrap">
+                                    <button class="btn btn-sm btn-filter active" data-filter="all" onclick="filterByTag('all')">
+                                        All <span class="badge bg-white text-primary ms-1">12</span>
+                                    </button>
+                                    <button class="btn btn-sm btn-filter" data-filter="knowledge" onclick="filterByTag('knowledge')">
+                                        Knowledge
+                                    </button>
+                                    <button class="btn btn-sm btn-filter" data-filter="entertainment" onclick="filterByTag('entertainment')">
+                                        Fun
+                                    </button>
+                                    <button class="btn btn-sm btn-filter" data-filter="academic" onclick="filterByTag('academic')">
+                                        Academic
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <button class="btn btn-clear-filters" onclick="clearAllFilters()">
+                                    <i class="bi bi-arrow-counterclockwise me-2"></i>Clear All Filters
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Category Grid -->
+<div class="container">
+    <div class="row g-4" id="categoryGrid">
+        <div class="col-12 col-md-6 col-lg-4 category-item" data-category="general knowledge" data-difficulty="mix" data-tag="knowledge">
+            <div class="category-card general" onclick="selectCategory('General Knowledge', '🏆', 12, '2:00', 'Mix')">
+                <div class="category-icon">🏆</div>
+                <h2 class="category-title">General Knowledge</h2>
+                <p class="category-description">Test your knowledge across a wide range of topics and trivia</p>
+                <div class="category-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Questions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">2:00</div>
+                        <div class="stat-label">Minutes</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">Mix</div>
+                        <div class="stat-label">Difficulty</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 category-item" data-category="science nature" data-difficulty="hard" data-tag="academic">
+            <div class="category-card science" onclick="selectCategory('Science & Nature', '🔬', 15, '3:00', 'Hard')">
+                <div class="category-icon">🔬</div>
+                <h2 class="category-title">Science & Nature</h2>
+                <p class="category-description">Explore the wonders of science, biology, chemistry, and physics</p>
+                <div class="category-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">15</div>
+                        <div class="stat-label">Questions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">3:00</div>
+                        <div class="stat-label">Minutes</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">Hard</div>
+                        <div class="stat-label">Difficulty</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 category-item" data-category="history" data-difficulty="medium" data-tag="academic">
+            <div class="category-card history" onclick="selectCategory('History', '📚', 10, '2:30', 'Medium')">
+                <div class="category-icon">📚</div>
+                <h2 class="category-title">History</h2>
+                <p class="category-description">Journey through time and test your historical knowledge</p>
+                <div class="category-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">10</div>
+                        <div class="stat-label">Questions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">2:30</div>
+                        <div class="stat-label">Minutes</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">Medium</div>
+                        <div class="stat-label">Difficulty</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 category-item" data-category="geography" data-difficulty="easy" data-tag="knowledge">
+            <div class="category-card geography" onclick="selectCategory('Geography', '🌍', 12, '2:00', 'Easy')">
+                <div class="category-icon">🌍</div>
+                <h2 class="category-title">Geography</h2>
+                <p class="category-description">Discover countries, capitals, landmarks, and world cultures</p>
+                <div class="category-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Questions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">2:00</div>
+                        <div class="stat-label">Minutes</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">Easy</div>
+                        <div class="stat-label">Difficulty</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 category-item" data-category="sports" data-difficulty="mix" data-tag="entertainment">
+            <div class="category-card sports" onclick="selectCategory('Sports', '⚽', 10, '1:30', 'Mix')">
+                <div class="category-icon">⚽</div>
+                <h2 class="category-title">Sports</h2>
+                <p class="category-description">Challenge yourself with questions about athletics and competitions</p>
+                <div class="category-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">10</div>
+                        <div class="stat-label">Questions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">1:30</div>
+                        <div class="stat-label">Minutes</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">Mix</div>
+                        <div class="stat-label">Difficulty</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 category-item" data-category="entertainment" data-difficulty="easy" data-tag="entertainment">
+            <div class="category-card entertainment" onclick="selectCategory('Entertainment', '🎬', 12, '2:00', 'Easy')">
+                <div class="category-icon">🎬</div>
+                <h2 class="category-title">Entertainment</h2>
+                <p class="category-description">Movies, music, TV shows, and pop culture knowledge</p>
+                <div class="category-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Questions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">2:00</div>
+                        <div class="stat-label">Minutes</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">Easy</div>
+                        <div class="stat-label">Difficulty</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 category-item" data-category="mathematics" data-difficulty="hard" data-tag="academic">
+            <div class="category-card science" onclick="selectCategory('Mathematics', '🔢', 15, '3:30', 'Hard')">
+                <div class="category-icon">🔢</div>
+                <h2 class="category-title">Mathematics</h2>
+                <p class="category-description">Test your skills in algebra, geometry, and problem-solving</p>
+                <div class="category-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">15</div>
+                        <div class="stat-label">Questions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">3:30</div>
+                        <div class="stat-label">Minutes</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">Hard</div>
+                        <div class="stat-label">Difficulty</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 category-item" data-category="literature" data-difficulty="medium" data-tag="academic">
+            <div class="category-card history" onclick="selectCategory('Literature', '📖', 12, '2:30', 'Medium')">
+                <div class="category-icon">📖</div>
+                <h2 class="category-title">Literature</h2>
+                <p class="category-description">Explore classic and modern books, authors, and poetry</p>
+                <div class="category-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Questions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">2:30</div>
+                        <div class="stat-label">Minutes</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">Medium</div>
+                        <div class="stat-label">Difficulty</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 category-item" data-category="technology" data-difficulty="medium" data-tag="knowledge">
+            <div class="category-card general" onclick="selectCategory('Technology', '💻', 12, '2:00', 'Medium')">
+                <div class="category-icon">💻</div>
+                <h2 class="category-title">Technology</h2>
+                <p class="category-description">Test your knowledge of computers, gadgets, and innovation</p>
+                <div class="category-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Questions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">2:00</div>
+                        <div class="stat-label">Minutes</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">Medium</div>
+                        <div class="stat-label">Difficulty</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 category-item" data-category="music" data-difficulty="easy" data-tag="entertainment">
+            <div class="category-card entertainment" onclick="selectCategory('Music', '🎵', 10, '1:45', 'Easy')">
+                <div class="category-icon">🎵</div>
+                <h2 class="category-title">Music</h2>
+                <p class="category-description">From classical to modern, test your musical knowledge</p>
+                <div class="category-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">10</div>
+                        <div class="stat-label">Questions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">1:45</div>
+                        <div class="stat-label">Minutes</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">Easy</div>
+                        <div class="stat-label">Difficulty</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 category-item" data-category="art design" data-difficulty="medium" data-tag="knowledge">
+            <div class="category-card geography" onclick="selectCategory('Art & Design', '🎨', 12, '2:15', 'Medium')">
+                <div class="category-icon">🎨</div>
+                <h2 class="category-title">Art & Design</h2>
+                <p class="category-description">Discover famous artists, movements, and masterpieces</p>
+                <div class="category-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Questions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">2:15</div>
+                        <div class="stat-label">Minutes</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">Medium</div>
+                        <div class="stat-label">Difficulty</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 category-item" data-category="food cooking" data-difficulty="easy" data-tag="entertainment">
+            <div class="category-card sports" onclick="selectCategory('Food & Cooking', '🍳', 10, '1:30', 'Easy')">
+                <div class="category-icon">🍳</div>
+                <h2 class="category-title">Food & Cooking</h2>
+                <p class="category-description">Culinary trivia, recipes, and international cuisine</p>
+                <div class="category-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">10</div>
+                        <div class="stat-label">Questions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">1:30</div>
+                        <div class="stat-label">Minutes</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">Easy</div>
+                        <div class="stat-label">Difficulty</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagination -->
+    <nav aria-label="Quiz categories pagination" class="mt-5">
+        <ul class="pagination justify-content-center" id="pagination">
+            <!-- Pagination will be generated by JavaScript -->
+        </ul>
+    </nav>
+
+    <!-- No Results Message -->
+    <div class="no-results d-none" id="noResults">
+        <i class="bi bi-search"></i>
+        <h3>No quiz categories found</h3>
+        <p>Try adjusting your search or filter criteria</p>
+    </div>
+
+    <p class="footer-text">💡 Choose a category to begin your quiz journey!</p>
+</div>
+
+<!-- Modal for Quiz Confirmation -->
+<div class="modal fade" id="quizModal" tabindex="-1" aria-labelledby="quizModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 rounded-4">
+            <div class="modal-body p-4 p-md-5">
+                <div class="modal-icon" id="modalIcon">🏆</div>
+                <h2 class="modal-title-custom text-center" id="modalTitle">General Knowledge Quiz</h2>
+                <p class="modal-description text-center">
+                    Test your general knowledge with our comprehensive quiz.
+                    Answer all questions correctly and see how you rank among other participants!
+                </p>
+                <div class="quiz-details">
+                    <div class="detail-item">
+                        <div class="detail-value" id="modalQuestions">12</div>
+                        <div class="detail-label">Questions</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-value" id="modalTime">2:00</div>
+                        <div class="detail-label">Minutes</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-value" id="modalDifficulty">Mix</div>
+                        <div class="detail-label">Difficulty</div>
+                    </div>
+                </div>
+                <div class="d-flex gap-3">
+                    <button class="btn-cancel flex-fill" data-bs-dismiss="modal">Cancel</button>
+                    <button class="btn-start-quiz flex-fill" onclick="startQuiz()">
+                        Start Quiz <i class="bi bi-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
